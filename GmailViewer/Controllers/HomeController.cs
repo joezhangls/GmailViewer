@@ -11,7 +11,7 @@ namespace GmailViewer.Controllers
     {
         public ActionResult Index()
         {
-            Mseeages value = new Mseeages();
+            Messages value = new Messages();
             value.getlist();
             return View(value.ListMinimal);
         }

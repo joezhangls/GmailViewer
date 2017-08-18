@@ -1,39 +1,49 @@
 ﻿@model IEnumerable<GmailViewer.Models.gMessage>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Viewer";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>MailList</h2>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model._from)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.subject)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.getdate)
+            @Html.DisplayNameFor(model => model.gettime)
         </th>
-        <th></th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.isUnread)
+            </th>
+            <th></th>*@
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.subject)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.getdate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.id })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr class="@(item.isUnread ? "Unread" : "" )">
+            <td>
+                @Html.DisplayFor(modelItem => item._from)
+            </td>
+            <td>
+                @Html.ActionLink(item.subject, "Details", "Messages", new { id = item.id }, null)
+                @*@Html.DisplayFor(modelItem => item.subject)*@
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.gettime)
+            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.isUnread)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
+                    @Html.ActionLink("Details", "Details", new { id=item.id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id=item.id })
+                </td>*@
+        </tr>
+    }
 
 </table>

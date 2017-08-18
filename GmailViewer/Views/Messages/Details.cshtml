@@ -1,0 +1,44 @@
+﻿@model GmailViewer.Models.gMessage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<div class="form-group">
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model._from)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model._from)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subject)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subject)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gettime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gettime)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.detail)
+        </dt>
+    </dl>
+</div>
+<div class="form-group">
+    @Html.Raw(Model.detail)
+</div>
+
+<div class="row">
+    @Html.ActionLink("Back to List", "Index", "Home")
+</div>
